@@ -16,6 +16,18 @@ title: Home
 
     {{ post.content }}
   </div>
+  
+  <div class="hashtags">
+    <ul class="tags">
+      {% for tag in page.tags %}
+        <li>
+          <a href="/hashtag/{{ tag|downcase }}">
+            #{{ tag }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
   {% endfor %}
 </div>
 
