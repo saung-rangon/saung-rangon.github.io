@@ -8,4 +8,4 @@ categories: [ungkara_sunda]
 Najan teu bisa ngapung siga manuk, tapi meunang waé ari reungit mah.
 rijki mah tos aya nu ngatur, jang!
 
-!(http://cakcak.yn.lt/cakcak.jpg)
+![title=cakcak lapar](http://cakcak.yn.lt/cakcak.jpg)
