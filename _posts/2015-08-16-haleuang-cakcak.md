@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title: Haleuang Cakcak
 layout: post
 tags: [rijki]
