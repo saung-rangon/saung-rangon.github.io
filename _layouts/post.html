@@ -14,7 +14,7 @@ layout: default
     {% for tag in page.tags %}
       <li>
         <h4>
-          <a href="/hashtag/{{ tag }}">
+          <a href="/hashtag/{{ tag|downcase }}">
             #{{ tag }}
           </a>
         </h4>
