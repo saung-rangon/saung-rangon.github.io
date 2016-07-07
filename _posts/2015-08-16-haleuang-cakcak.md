@@ -6,6 +6,6 @@ tags: [rijki]
 categories: [ungkara-sunda]
 ---
 Najan teu bisa ngapung siga manuk, tapi meunang waé ari reungit mah.
-rijki mah tos aya nu ngatur, jang!
+Da rijki mah tos aya nu ngatur, jang!
 
-![cakcak lapar](http://cakcak.yn.lt/cakcak.jpg "cakcak lapar")
+<img alt="cakcak lapar" src="//cakcak.yn.lt/cakcak.jpg" title="cakcak lapar">
