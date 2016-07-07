@@ -347,6 +347,7 @@ tbody tr:nth-child(odd) th {
   transition: opacity 0.2s linear;
 }
 .hashtags li a:hover {
+  text-decoration: none;
   background: #406f48;
   color: #fff !important;
 }
