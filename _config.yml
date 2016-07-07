@@ -1,8 +1,9 @@
+timezone: Asia/Jakarta
 excerpt_separator: ""
 pygments: true
 markdown: kramdown
 url: http://yusuphm.github.io
-title: yusuphm
+title: Yusuphm
 tagline: A log of everyday life
 description: My awesome new site
 paginate: 5
