@@ -8,18 +8,19 @@ layout: default
   {{ content }}
 </div>
 
-<div class="related">
+<div class="tag-list">
   <h2>Tags</h2>
   <ul class="tags">
-    {% for post in site.tags %}
-      <li>
-        <h3>
-          <a href="{{ post.url }}">
-            {{ post.title }}
-            <small>{{ post.date | date: '%a, %d %b %Y %T' }}</small>
-          </a>
-        </h3>
-      </li>
-    {% endfor %}
+    {% for tag in page.tags %}
+      {% for post in site.tags[ tag ] %}
+        <li>
+          <h3>
+            <a href="{{ post.url }}">
+              {{ post.title }}
+              <small>{{ post.date | date: '%a, %d %b %Y %T' }}</small>
+            </a>
+          </h3>
+        </li>
+      {% endfor %}
   </ul>
 </div>
