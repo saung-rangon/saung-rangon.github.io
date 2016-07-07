@@ -9,15 +9,12 @@ layout: default
 </div>
 
 <div class="hashtags">
-  <h2>Hashtags</h2>
   <ul class="tags">
     {% for tag in page.tags %}
       <li>
-        <h4>
-          <a href="/hashtag/{{ tag|downcase }}">
-            #{{ tag }}
-          </a>
-        </h4>
+        <a href="/hashtag/{{ tag|downcase }}">
+          #{{ tag }}
+        </a>
       </li>
     {% endfor %}
   </ul>
