@@ -9,14 +9,14 @@ layout: default
 </div>
 
 <div class="related">
-  <h2>Tulisan Serupa</h2>
-  <ul class="related-posts">
-    {% for post in site.related_posts limit:3 %}
+  <h2>Tags</h2>
+  <ul class="tags">
+    {% for post in site.tags %}
       <li>
         <h3>
           <a href="{{ post.url }}">
             {{ post.title }}
-            <small>{{ post.date | date_to_string }}</small>
+            <small>{{ post.date | date: '%a, %d %b %Y %T' }}</small>
           </a>
         </h3>
       </li>
