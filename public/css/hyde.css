@@ -124,7 +124,7 @@ a.sidebar-nav-item:focus {
 }
 @media (max-width: 1024px) {
     .rsidebar {
-      display: none;
+      /*display: none;*/
     }
 }
 
