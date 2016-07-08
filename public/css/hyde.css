@@ -116,7 +116,7 @@ a.sidebar-nav-item:focus {
 /* Right sidebar */
 @media (min-width: 1025px) {
     .rsidebar {
-        position: fixed;
+        position: absolute;
         top: 0;
         right: 0;
         width: 18rem;
