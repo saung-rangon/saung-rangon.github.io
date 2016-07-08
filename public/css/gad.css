@@ -1,0 +1,16 @@
+.gad {
+  margin: auto;
+  width: 70%;
+}
+
+@media (min-width: 1152px) {
+  .gad {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 12rem;
+      height: 100%;
+      border: 1px solid red;
+      padding-top: 100px;
+  }
+}
