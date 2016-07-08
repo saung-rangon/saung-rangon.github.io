@@ -259,10 +259,8 @@ tbody tr:nth-child(odd) th {
 
 .container {
   max-width: 38rem;
-  padding-left:  1rem;
-  padding-right: 1rem;
-  margin-left:  auto;
-  margin-right: auto;
+  padding: 0 1rem;
+  margin:  auto;
 }
 
 
@@ -330,7 +328,6 @@ tbody tr:nth-child(odd) th {
 .hashtags ul {
   list-style: none;
   padding: 0;
-  border-top: 1px solid #e5e5e5;
 }
 .hashtags li {
   display: inline;
