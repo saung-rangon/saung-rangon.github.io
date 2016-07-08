@@ -1,9 +1,9 @@
 ---
 published: true
-title: 'Pupujieun (Mencari Muka)'
+title: 'Néangan Beungeut'
 layout: post
 tags: [babasan, pupujieun, 'mencari muka']
-categories: ['ungkara-sunda', 'babasan']
+categories: ['ungkara-sunda', babasan]
 author: Yusuphm
 ---
 
