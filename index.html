@@ -19,8 +19,8 @@ title: Home
       <ul class="tags">
        {% for tag in post.tags %}
        <li>
-         <a href="/hashtag/{{ tag|downcase }}">
-           #{{ tag|slugify  }}
+         <a href="/hashtag/{{ tag |downcase |slugify  }}">
+           #{{ tag }}
          </a>
        </li>
        {% endfor %}
