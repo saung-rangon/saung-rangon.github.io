@@ -3,7 +3,7 @@ published: true
 title: 'Néangan Beungeut'
 layout: post
 tags: [babasan, pupujieun, 'mencari muka']
-categories: ['ungkara-sunda', babasan]
+categories: ['ungkara-sunda']
 author: Yusuphm
 ---
 
