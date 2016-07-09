@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title: Mengapa Harus Berjumpa
 layout: post
 tags: []
@@ -7,7 +7,8 @@ categories: []
 author: Yusuphm
 ---
 
->```
+>
+```
 Kembalilah kau ke padanya sayang
 Biarkanlah kini ku sendiri
 Doaku selalu menyertaimu
