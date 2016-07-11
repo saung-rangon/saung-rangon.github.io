@@ -12,12 +12,10 @@ layout: default
   <ul class="tags">
     {% for tag in page.tags %}
       <li>
-        <a href="/hashtag/{{ tag|downcase }}">
+        <a href="/hashtag/{{ tag |downcase |slugify }}">
           #{{ tag }}
         </a>
       </li>
     {% endfor %}
   </ul>
 </div>
-
-{% include gad.html %}
