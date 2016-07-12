@@ -27,6 +27,10 @@ title: Home
      </ul>
    </div>
    
+   {% if forloop.index == 2 %}
+     {% include gad.html %}
+   {% endif %}
+   
   </div>
   {% endfor %}
 </div>
@@ -47,5 +51,3 @@ title: Home
     <span class="pagination-item newer">Newer</span>
   {% endif %}
 </div>
-
-{% include gad.html %}
