@@ -1,6 +1,7 @@
 .gad {
-  margin: auto;
-  width: 70%;
+  margin: auto auto 1rem;
+  width: 75%;
+  height: 90px;
 }
 
 @media (min-width: 1152px) {
