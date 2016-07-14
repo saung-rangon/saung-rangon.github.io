@@ -28,12 +28,14 @@ title: Home
      </div>
     </div>
     
-    {% if forloop.index == 1 %}
-      {% include gad.html %}
+    {% if forloop.index0 == 0 %}
+      {% include gad2.html %}
     {% endif %}
     
   {% endfor %}
 </div>
+
+{% include gad.html %}
 
 <div class="pagination">
   {% if paginator.next_page %}
