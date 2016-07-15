@@ -80,7 +80,6 @@ html {
   color: #fff;
   margin-top: 0;
   font-family: "Abril Fatface", serif;
-  font-size: 3.25rem;
 }
 
 /* Sidebar nav */
@@ -114,6 +113,20 @@ a.sidebar-nav-item:focus {
   }
 }
 
+/* Right sidebar */
+@media (min-width: 1025px) {
+    .rsidebar {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 18rem;
+    }
+}
+@media (max-width: 1024px) {
+    .rsidebar {
+      /*display: none;*/
+    }
+}
 
 /* Container
  *
