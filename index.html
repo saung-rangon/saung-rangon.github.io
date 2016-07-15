@@ -13,6 +13,11 @@ title: Home
         </a>
       </h1>
       <span class="post-date">{{ post.date | date_to_string }} &middot; {{ post.author }}</span>
+      
+      {% if forloop.index0 == 0 %}
+        {% include gad01.html %}
+      {% endif %}
+
       {{ post.content }}
       
       <div class="hashtags">
@@ -25,13 +30,13 @@ title: Home
          </li>
          {% endfor %}
        </ul>
-     </div>
+      </div>
+     
+      {% if forloop.index0 == 2 %}
+        {% include gad02.html %}
+      {% endif %}
+
     </div>
-    
-    {% if forloop.index0 == 0 %}
-      {% include gad2.html %}
-    {% endif %}
-    
   {% endfor %}
 </div>
 
