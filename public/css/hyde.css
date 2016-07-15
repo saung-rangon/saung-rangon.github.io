@@ -70,6 +70,12 @@ html {
   }
 }
 
+@media (min-width: 64rem) {
+  .sidebar {
+    width: 14rem;
+  }
+}
+
 /* Sidebar links */
 .sidebar a {
   color: #fff;
