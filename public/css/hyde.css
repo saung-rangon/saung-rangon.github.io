@@ -65,7 +65,7 @@ html {
     top: 0;
     left: 0;
     bottom: 0;
-    width: 18rem;
+    width: 17rem;
     text-align: left;
   }
 }
@@ -113,20 +113,6 @@ a.sidebar-nav-item:focus {
   }
 }
 
-/* Right sidebar */
-@media (min-width: 1025px) {
-    .rsidebar {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 18rem;
-    }
-}
-@media (max-width: 1024px) {
-    .rsidebar {
-      /*display: none;*/
-    }
-}
 
 /* Container
  *
@@ -149,8 +135,8 @@ a.sidebar-nav-item:focus {
 
 @media (min-width: 64rem) {
   .content {
-    margin-left: 22rem;
-    margin-right: 4rem;
+    margin-left: 14rem;
+    margin-right: 10rem;
   }
 }
 
@@ -178,8 +164,6 @@ a.sidebar-nav-item:focus {
     margin-right: 22rem;
   }
 }
-
-
 
 /*
  * Themes
