@@ -15,6 +15,7 @@ title: Home
       <span class="post-date">{{ post.date | date_to_string }} &middot; {{ post.author }}</span>
       
       {% if forloop.index0 == 0 %}
+        {% include bidvert.html %}
         {% include gad01.html %}
       {% endif %}
 
