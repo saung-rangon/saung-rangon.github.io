@@ -17,7 +17,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="{{ page.url }}" />
   <meta property="og:image" content="{{ page.image }}" />
-  <meta property="og:description" content="{{ page.content }}" />
+  <meta property="og:description" content="{{ page.content |strip_html }}" />
 
   <!-- CSS -->
   <link rel="stylesheet" href="/public/css/poole.css">
