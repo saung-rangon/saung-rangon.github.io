@@ -3,7 +3,7 @@ published: true
 title: Mengapa Harus Berjumpa
 layout: post
 tags: []
-categories: []
+categories: ungkara-sunda
 author: Yusuphm
 ---
 
