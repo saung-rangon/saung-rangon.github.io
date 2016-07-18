@@ -4,6 +4,7 @@ pygments: true
 markdown: kramdown
 url: https://saung-rangon.github.io
 title: Saung Rangon
+image: https://scontent-sin1-1.xx.fbcdn.net/v/t1.0-0/s480x480/10846330_305064239692254_5277836569895247612_n.jpg?oh=d75d740a5d30e81a0402e628fed3cdc8&oe=58335073
 tagline: A log of everyday life
 description: My awesome new site
 paginate: 5
