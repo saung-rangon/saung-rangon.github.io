@@ -139,7 +139,29 @@ a.sidebar-nav-item:focus {
   }
 }
 
+.rsidebar {
+    /*border: 1px solid red;*/
+    /* width: 19%; */
+    /*height: 50%;*/
+}
 
+@media(min-width: 1184px) {
+    .rsidebar {
+        position: absolute;
+        top: 0;
+        /* width: 19%; */
+        height: 50%;
+        margin-left: 81%;
+    }
+}
+
+@media(min-width: 1408px) {
+    .rsidebar {
+        width: 280px;
+        margin-left: 1140px;
+    }
+}
+ 
 /*
  * Reverse layout
  *
