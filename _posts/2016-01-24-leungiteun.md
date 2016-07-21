@@ -9,6 +9,7 @@ author: Yusuphm
 
 Rét deui, rét deui. Asa nyeri beuheung sosonggéteun anu dirérétan taya datang.
 Ngarahuh asa melang, geus sababaraha poé taya béjana, kamana atuh nya?
+
 ```
 "héy! nuju naon?"
 "biasa wé nuju calik nyalsé"
@@ -17,6 +18,7 @@ Ngarahuh asa melang, geus sababaraha poé taya béjana, kamana atuh nya?
 "pasti ibakmah teu acan nya? "
 "terang waé, kin ah teu acan tuus késang"
 ```
+
 Tara aya paguneman anu anéh atawa istiméwa mun ngobrol jeung manéhna mah,
 tapi duka kumaha asa betah, kadang kala bisa méakeun itungan jam.
 Mun pareng suwung karasa pisan kuring leungiteun. 
