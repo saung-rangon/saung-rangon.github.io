@@ -1,4 +1,6 @@
 ---
 ---
 
-<script>dd = {{ site|jsonify }}</script>
+{% for tag in site.tags %}
+    &bull; {{ forloop.index }}<br>
+{% endfor %}
