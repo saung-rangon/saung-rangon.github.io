@@ -12,7 +12,7 @@ div.simpleSocialShareTable{
 	display: table;
 }
 div.simpleSocialShareTableCell{
-	display: table-cell;
+	display: inline-block;
 	vertical-align: middle;
 }
 div.simpleSocialShareText{
