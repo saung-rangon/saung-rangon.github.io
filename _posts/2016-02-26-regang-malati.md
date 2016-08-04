@@ -3,7 +3,7 @@ published: true
 title: 'Régang Malati'
 layout: post
 tags: []
-categories: 'ungkara-sunda'
+categories: ['ungkara-sunda']
 author: Yusuphm
 ---
 
