@@ -2,10 +2,10 @@
     {% if tags %}
         <ul class="tags">
         {% for tag in tags %}
-            {% assign PREFIX = tag|slice: 0, 3 %}
+            {% assign PREFIX = tagn |slice: 0, 3 %}
 
             {% if PREFIX == 'fb:' %}
-                {% assign tag = tag |slice: 3, 50 %}
+                {% assign tag = tag |slice: 3, 5 %}
                 <li><a href="https://facebook.com/hashtag/{{ tag |downcase  }}">
                     #{{ tag }}
                 </a></li>
