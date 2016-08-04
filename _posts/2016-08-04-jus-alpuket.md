@@ -2,7 +2,7 @@
 published: true
 title: 'Jus Alpuket'
 layout: post
-tags: [jus-alpuket, fiksi_ags]
+tags: ['jus alpuket', fiksi_ags]
 categories: [ungkara-sunda]
 author: Yusuphm
 ---
