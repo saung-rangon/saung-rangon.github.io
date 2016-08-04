@@ -3,6 +3,7 @@
         <ul class="tags">
         {% for tag in tags %}
             {% assign PREFIX = tag|slice: 0, 3 %}
+            <!--{{ PREFIX }}-->
 
             {% if PREFIX == 'fb:' %}
                 {% assign tag = tag|slice: 3 %}
