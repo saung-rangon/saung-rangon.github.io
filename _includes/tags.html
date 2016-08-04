@@ -2,16 +2,19 @@
     {% if tags %}
         <ul class="tags">
         {% for tag in tags %}
-         
-           {.% if tag|slice: 0, 3 == 'fb:' %}
-                {.% assign tag = tag| slice 3 %}
-           {.% endif %}
-         
-            <li>
-                <a href="/hashtag/{{ tag |downcase |slugify  }}">
+            {% assign PREFIX = tag| slice 0, 3 %}
+
+            {% if PREFIX == 'fb:' %}
+                {% assign tag = tag| slice 3 %}
+                <li><a href="https://facebook.com/hashtag/{{ tag |downcase |slugify  }}">
                     #{{ tag }}
-                </a>
-           </li>
+                </a></li>
+            {% else %}
+                <li><a href="/hashtag/{{ tag |downcase |slugify  }}">
+                    #{{ tag }}
+                </a></li>
+            {% endif %}
+            
        {% endfor %}
        </ul>
     {% endif %}
