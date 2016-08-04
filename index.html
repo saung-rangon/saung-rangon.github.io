@@ -22,18 +22,7 @@ title: Home
       {% endif %}
 
       {{ post.content }}
-      
-      <div class="hashtags">
-        <ul class="tags">
-         {% for tag in post.tags %}
-         <li>
-           <a href="/hashtag/{{ tag |downcase |slugify  }}">
-             #{{ tag }}
-           </a>
-         </li>
-         {% endfor %}
-       </ul>
-      </div>
+      {% include tags.html %}
       
       <div class="post-footer-toolbar">
         <div class="share-this" data-url="{{ post.url }}"></div>
