@@ -5,8 +5,8 @@
             {% assign PREFIX = tag |slice: 0, 3 %}
 
             {% if PREFIX == 'fb:' %}
-                {% assign fbtag = tag |slice: 3 %}
-                <li><a href="https://facebook.com/hashtag/{{ fbtag |downcase }}">
+                {% assign fbtag = tag |slice: 3, 50 %}
+                <li><a target="_blank" href="https://facebook.com/hashtag/{{ fbtag |downcase }}">
                     #{{ fbtag }}
                 </a></li>
             {% else %}
