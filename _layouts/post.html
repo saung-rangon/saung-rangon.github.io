@@ -8,17 +8,8 @@ layout: default
   {{ content }}
 </div>
 
-<div class="hashtags">
-  <ul class="tags">
-    {% for tag in page.tags %}
-      <li>
-        <a href="/hashtag/{{ tag |downcase |slugify }}">
-          #{{ tag }}
-        </a>
-      </li>
-    {% endfor %}
-  </ul>
-</div>
+{% assign tags = page.tags %}
+{% include tags.html %}
 
 <div class="fb-like" data-href="saung-rangon.github.io{{ page.url }}"
     data-layout="standard" data-action="like"
