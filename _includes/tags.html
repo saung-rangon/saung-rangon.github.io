@@ -4,9 +4,9 @@
         {% for tag in tags %}
             {% assign PREFIX = tagn |slice: 0, 3 %}
 
-            {% if PREFIX == 'fb:' %}
+            {% if PREFIX == "fb:" %}
                 <!--....-->
-                {% assign tag = tag |slice: 3, 5 %}
+                {% assign tag = tag |slice: 3, 4 %}
                 <li><a href="https://facebook.com/hashtag/{{ tag |downcase  }}">
                     #{{ tag }}
                 </a></li>
