@@ -1,9 +1,9 @@
 ---
 layout: post
 published: true
-title: 'Jus Alpuket'
+title: '"Jus Alpuket"'
 image: 'http://i65.tinypic.com/i77nmp.png'
-tags: ['jus alpuket', 'fb:fiksi_ags']
+tags: ['jus alpuket', fiksi]
 categories: [ungkara-sunda]
 author: Yusuphm
 ---
