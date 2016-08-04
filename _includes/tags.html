@@ -3,9 +3,9 @@
         <ul class="tags">
         {% for tag in tags %}
          
-           {% if tag|slice: 0, 3 == 'fb:' %}
-                {% assign tag = tag| slice 3 %}
-           {% endif %}
+           {.% if tag|slice: 0, 3 == 'fb:' %}
+                {.% assign tag = tag| slice 3 %}
+           {.% endif %}
          
             <li>
                 <a href="/hashtag/{{ tag |downcase |slugify  }}">
