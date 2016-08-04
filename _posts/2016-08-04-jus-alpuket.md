@@ -1,7 +1,8 @@
 ---
+layout: post
 published: true
 title: 'Jus Alpuket'
-layout: post
+image: 'http://i65.tinypic.com/i77nmp.png'
 tags: ['jus alpuket', 'fb:fiksi_ags']
 categories: [ungkara-sunda]
 author: Yusuphm
@@ -25,3 +26,5 @@ Disampeurkeun, "Damel jus alpuket, yu!"<br>
 "Kedah dikumbah heula, atuh"<br>
 "Sanés alpuket éta", Leungeun meulit kana cangkéng lengkéhna.<br>
 Imas ngajérété, gétékan. HP ngageter, geuwat disasar, dipareuman.
+
+![Jus alpukat cinta](http://i65.tinypic.com/i77nmp.png 'Jus alpukat cinta')
