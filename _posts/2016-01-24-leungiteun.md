@@ -2,8 +2,8 @@
 published: true
 title: Leungiteun
 layout: post
-tags: 
-categories: ungkara-sunda
+tags: []
+categories: [ungkara-sunda]
 author: Yusuphm
 ---
 
