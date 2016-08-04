@@ -27,4 +27,4 @@ Disampeurkeun, "Damel jus alpuket, yu!"<br>
 "Sanés alpuket éta", Leungeun meulit kana cangkéng lengkéhna.<br>
 Imas ngajérété, gétékan. HP ngageter, geuwat disasar, dipareuman.
 
-![Jus alpukat cinta](http://i65.tinypic.com/i77nmp.png 'Jus alpukat cinta')
+<img width="60%" alt="Jus alpukat cinta" src="http://i65.tinypic.com/i77nmp.png" title="Jus alpukat cinta">
