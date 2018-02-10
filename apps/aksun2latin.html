@@ -1,282 +1,284 @@
 <meta charset="utf-8"/>
 <body>
-    <h2>Aksara sunda translator (<a href="https://github.com/Saung-Rangon/saung-rangon.github.io/raw/master/apps/aksun2latin.html">Download file</a>)</h2>
+    <h2>Aksara sunda translator
+        ( <a href="https://github.com/Saung-Rangon/aksun2latin/raw/master/aksun2latin.html">Download</a>
+        | <a href="https://github.com/Saung-Rangon/aksun2latin/edit/master/aksun2latin.html">Edit</a> )
+    </h2>
     <textarea placeholder="ᮞᮥᮔ᮪ᮓ" id=aksun rows="5" cols="25" style="    font-size: 25px;"></textarea><br/>
     <input type="submit" value="-- ↓↓ --"/>
     <input type="submit" value="-- ↑↑ --"/><br/>
     <textarea placeholder="Latin" id=latin rows="5" cols="25" style="    font-size: 25px;"></textarea>
-<script>
-    $aksun = document.querySelector('#aksun')
-    $latin = document.querySelector('#latin')
-    $button1 = document.querySelector('[value="-- ↓↓ --"]') || {}
-    $button2 = document.querySelector('[value="-- ↑↑ --"]') || {}
-    $aksun.onpaste = $aksun.onkeyup = $button1.onclick = function() {
-        setTimeout(function() {
-            $latin.value = new aksun2latin($aksun.value)
-        }, 2)
-    }
-    $latin.onpaste = $latin.onkeyup = $button2.onclick = function() {
-        setTimeout(function() {
-            $aksun.value = new latin2aksun($latin.value)
-        }, 2)
-    }
+    <script>
+        $aksun = document.querySelector('#aksun')
+        $latin = document.querySelector('#latin')
+        $button1 = document.querySelector('[value="-- ↓↓ --"]') || {}
+        $button2 = document.querySelector('[value="-- ↑↑ --"]') || {}
+        $aksun.onpaste = $aksun.onkeyup = $button1.onclick = function() {
+            setTimeout(function() {
+                $latin.value = new aksun2latin($aksun.value)
+            }, 2)
+        }
+        $latin.onpaste = $latin.onkeyup = $button2.onclick = function() {
+            setTimeout(function() {
+                $aksun.value = new latin2aksun($latin.value)
+            }, 2)
+        }
 
-    var consonants = (function() {
-        var map = 'kqg-cjz-tdnpfvbmyrlwsxh'.split('')
-        map[3] = 'ng'
-        map[7] = 'ny'
-        map[36] = 'kh'
-        map[37] = 'sy'
-        return map
-    })()
+        var consonants = (function() {
+            var map = 'kqg-cjz-tdnpfvbmyrlwsxh'.split('')
+            map[3] = 'ng'
+            map[7] = 'ny'
+            map[36] = 'kh'
+            map[37] = 'sy'
+            return map
+        })()
 
-    var rarangkenMap = (function() {
-        var map = '-rhyrlmw'.split('')
-        map[0] = 'ng'
-        return map
-    })()
+        var rarangkenMap = (function() {
+            var map = '-rhyrlmw'.split('')
+            map[0] = 'ng'
+            return map
+        })()
 
-    var vowels = (function() {
-        chars = 'aiu\u00e9oe'.split('')
-        chars.PAMAEH = 7082
-        chars.DEFAULT = 7043
-        chars.E_CUREK_ALT = '\u00e8\u00ea\u0113\u0115' + chars[3]
-        chars[6] = 'eu'
-        chars[7] = chars.PAMAEH
-        return chars
-    })()
+        var vowels = (function() {
+            chars = 'aiu\u00e9oe'.split('')
+            chars.PAMAEH = 7082
+            chars.DEFAULT = 7043
+            chars.E_CUREK_ALT = '\u00e8\u00ea\u0113\u0115' + chars[3]
+            chars[6] = 'eu'
+            chars[7] = chars.PAMAEH
+            return chars
+        })()
 
-    function aksun2latin(strAksun) {
-        this.strAksun = strAksun
-        this.result = []
-        this.translateAksunChars()
-    }
+        function aksun2latin(strAksun) {
+            this.strAksun = strAksun
+            this.result = []
+            this.translateAksunChars()
+        }
 
-    aksun2latin.prototype = {
-        toString: function() {
-            return this.result.join('')
-        },
-        translateAksunChars: function() {
-            var current, next, rarangken, latin
+        aksun2latin.prototype = {
+            toString: function() {
+                return this.result.join('')
+            },
+            translateAksunChars: function() {
+                var current, next, rarangken, latin
 
-            for (i = 0, l = this.strAksun.length; i < l; i++) {
-                current = this.strAksun[i].charCodeAt()
-                next = (this.strAksun[i + 1] || '').charCodeAt()
-                rarangken = ''
+                for (i = 0, l = this.strAksun.length; i < l; i++) {
+                    current = this.strAksun[i].charCodeAt()
+                    next = (this.strAksun[i + 1] || '').charCodeAt()
+                    rarangken = ''
 
-                if (latin = this.toVowel(current)) {
+                    if (latin = this.toVowel(current)) {
+                    }
+                    else if (latin = this.toSuffix(current)) {
+                    }
+                    else if (latin = this.toConsonant(current)) {
+                        if (rarangken = this.toSuffix(next)) {
+                            latin += this.toVowel(vowels.DEFAULT)
+                        }
+                        else if (rarangken = this.toInfix(next)) {
+                            latin += rarangken
+                            next = (this.strAksun[i + 2] || '').charCodeAt()
+                            rarangken = this.toSuffixVowel(next)
+                            i++
+                        }
+                        else if (rarangken = this.toSuffixVowel(next)) {
+                        }
+
+                        if (rarangken) {
+                            rarangken === vowels.PAMAEH && (rarangken = '')
+                            i++
+                        }
+                        else rarangken = this.toVowel(vowels.DEFAULT)
+                    }
+                    else latin = this.strAksun[i]
+                    //console.log(chlatin + '+' + rarangken)
+                    this.result.push(latin, rarangken || '')
                 }
-                else if (latin = this.toSuffix(current)) {
-                }
-                else if (latin = this.toConsonant(current)) {
-                    if (rarangken = this.toSuffix(next)) {
-                        latin += this.toVowel(vowels.DEFAULT)
-                    }
-                    else if (rarangken = this.toInfix(next)) {
-                        latin += rarangken
-                        next = (this.strAksun[i + 2] || '').charCodeAt()
-                        rarangken = this.toSuffixVowel(next)
-                        i++
-                    }
-                    else if (rarangken = this.toSuffixVowel(next)) {
-                    }
-
-                    if (rarangken) {
-                        rarangken === vowels.PAMAEH && (rarangken = '')
-                        i++
-                    }
-                    else rarangken = this.toVowel(vowels.DEFAULT)
-                }
-                else latin = this.strAksun[i]
-                //console.log(chlatin + '+' + rarangken)
-                this.result.push(latin, rarangken || '')
-            }
-        },
-        toConsonant: function(code) {
-            var letter = ''
-            switch (true) {
-                case code >= 7050 && code <= 7072:
-                case code == 7086:
-                case code == 7087:
-                    letter = consonants[code - 7050]
-            }
-            return letter
-        },
-        toInfix: function(code) {
-            if (code >= 7073 && code <= 7075)
-                return rarangkenMap[code - 7070]
-        },
-        toSuffix: function(code) {
-            if (code >= 7040 && code <= 7042)
-                return rarangkenMap[code - 7040]
-        },
-        toVowel: function(code) {
-            if (code >= 7043 && code <= 7049)
-                return vowels[code - 7043]
-        },
-        toSuffixVowel: function(code) {
-            if (code >= 7076 && code <= 7082)
-                return vowels[code - 7075]
-        },
-    }
-
-    function latin2aksun(strLatin) {
-        var latin
-        this.result = []
-        this.strLatin = strLatin
-        this.index = 0
-        this.init()
-        this.translateLatinChars()
-    }
-
-    latin2aksun.prototype = {
-        init: function() {
-            this.__defineGetter__('current', function() {
-                return this.strLatin[this.index]
-            })
-            this.__defineGetter__('prev', function() {
-                return this.strLatin[this.index - 1]
-            })
-            this.__defineGetter__('next', function() {
-                return this.strLatin[this.index + (this.latin || '0').length]
-            })
-        },
-        toString: function() {
-            return this.result.join('')
-        },
-        translateLatinChars: function(aksun) {
-            while (this.index < this.strLatin.length) {
-                this.latin = this.current
+            },
+            toConsonant: function(code) {
+                var letter = ''
                 switch (true) {
-                    case this.readNumber():
-                    case this.readVowel():
-                    case this.readConsonant():
-                    case aksun = this.readRarangken():
-                        aksun = String.fromCharCode(this.code)
+                    case code >= 7050 && code <= 7072:
+                    case code == 7086:
+                    case code == 7087:
+                        letter = consonants[code - 7050]
+                }
+                return letter
+            },
+            toInfix: function(code) {
+                if (code >= 7073 && code <= 7075)
+                    return rarangkenMap[code - 7070]
+            },
+            toSuffix: function(code) {
+                if (code >= 7040 && code <= 7042)
+                    return rarangkenMap[code - 7040]
+            },
+            toVowel: function(code) {
+                if (code >= 7043 && code <= 7049)
+                    return vowels[code - 7043]
+            },
+            toSuffixVowel: function(code) {
+                if (code >= 7076 && code <= 7082)
+                    return vowels[code - 7075]
+            },
+        }
 
-                    case aksun === false:
-                    case aksun = this.current:
+        function latin2aksun(strLatin) {
+            var latin
+            this.result = []
+            this.strLatin = strLatin
+            this.index = 0
+            this.init()
+            this.translateLatinChars()
+        }
+
+        latin2aksun.prototype = {
+            init: function() {
+                this.__defineGetter__('current', function() {
+                    return this.strLatin[this.index]
+                })
+                this.__defineGetter__('prev', function() {
+                    return this.strLatin[this.index - 1]
+                })
+                this.__defineGetter__('next', function() {
+                    return this.strLatin[this.index + (this.latin || '0').length]
+                })
+            },
+            toString: function() {
+                return this.result.join('')
+            },
+            translateLatinChars: function(aksun) {
+                while (this.index < this.strLatin.length) {
+                    this.latin = this.current
+                    switch (true) {
+                        case this.readNumber():
+                        case this.readVowel():
+                        case this.readConsonant():
+                        case aksun = this.readRarangken():
+                            aksun = String.fromCharCode(this.code)
+
+                        case aksun === false:
+                        case aksun = this.current:
+                    }
+
+                    this.index += this.latin.length
+                    aksun && this.result.push(aksun);
+                }
+            },
+            readNumber: function() {
+                var number = parseInt(this.latin)
+                if (number >= 0 && number <= 9)
+                    return (this.code = number + 7088) > 0
+            },
+            readConsonant: function() {
+                if (this.rarangken) return
+
+                this.latin = this.current + this.next
+                this.code = this.toConsonant(this.latin) ||
+                  /**/     this.toConsonant(this.latin = this.latin[0])
+
+                if (!this.code) return
+                // Rarangkén tengah
+                this.rarangken = this.toInfix(this.latin)
+                switch (true) {
+                    case !this.rarangken:
+                    case !this.toConsonant(this.prev):
+                    case !this.toVowel(this.next):
+                        break;
+
+                    default:
+                        return
                 }
 
-                this.index += this.latin.length
-                aksun && this.result.push(aksun);
-            }
-        },
-        readNumber: function() {
-            var number = parseInt(this.latin)
-            if (number >= 0 && number <= 9)
-                return (this.code = number + 7088) > 0
-        },
-        readConsonant: function() {
-            if (this.rarangken) return
+                // Rarangkén tukang
+                this.rarangken = this.toSuffix(this.latin)
+                switch (true) {
+                    case !this.rarangken:
+                    case !this.toVowel(this.prev):
+                    case this.toVowel(this.next) > 0:
+                        break;
 
-            this.latin = this.current + this.next
-            this.code = this.toConsonant(this.latin) ||
-              /**/     this.toConsonant(this.latin = this.latin[0])
+                    default:
+                        return
+                }
 
-            if (!this.code) return
-            // Rarangkén tengah
-            this.rarangken = this.toInfix(this.latin)
-            switch (true) {
-                case !this.rarangken:
-                case !this.toConsonant(this.prev):
-                case !this.toVowel(this.next):
-                    break;
+                if (!this.toVowel(this.next) && !this.toInfix(this.next)) {
+                    this.index--
+                    this.rarangken = vowels.PAMAEH
+                }
 
-                default:
-                    return
-            }
-
-            // Rarangkén tukang
-            this.rarangken = this.toSuffix(this.latin)
-            switch (true) {
-                case !this.rarangken:
-                case !this.toVowel(this.prev):
-                case this.toVowel(this.next) > 0:
-                    break;
-
-                default:
-                    return
-            }
-
-            if (!this.toVowel(this.next) && !this.toInfix(this.next)) {
-                this.index--
-                this.rarangken = vowels.PAMAEH
-            }
-
-            return this.code > 0
-        },
-        readVowel: function() {
-            this.latin = this.current + this.next
-            this.code = this.toVowel(this.latin) ||
-              /**/     this.toVowel(this.latin = this.latin[0])
-
-            switch (true) {
-                case !this.code:
-                case !this.prev:
-                case !this.toConsonant(this.prev):
-                    return this.code > 0
-            }
-
-            this.rarangken = this.toSuffixVowel(this.latin)
-        },
-        readRarangken: function(code) {
-            if (this.rarangken == vowels.DEFAULT) {
-                this.rarangken = undefined
-                return false
-            }
-
-            if (this.code = this.rarangken) {
-                this.rarangken = undefined
                 return this.code > 0
-            }
+            },
+            readVowel: function() {
+                this.latin = this.current + this.next
+                this.code = this.toVowel(this.latin) ||
+                  /**/     this.toVowel(this.latin = this.latin[0])
 
-            if (!this.prev) return
-            if (code = this.toSuffixVowel(this.latin)) {
-                this.latin = false
-                return code
-            }
+                switch (true) {
+                    case !this.code:
+                    case !this.prev:
+                    case !this.toConsonant(this.prev):
+                        return this.code > 0
+                }
 
-            if (code = this.toSuffix(this.latin)) {
-            }
-        },
-        toConsonant: function(latin, index) {
-            latin && (latin = latin.toLowerCase())
-            index = consonants.indexOf(latin)
-            return index >= 0 ? 7050 + index : 0
-        },
-        toVowel: function(latin, index) {
-            latin && (latin = latin.toLowerCase())
+                this.rarangken = this.toSuffixVowel(this.latin)
+            },
+            readRarangken: function(code) {
+                if (this.rarangken == vowels.DEFAULT) {
+                    this.rarangken = undefined
+                    return false
+                }
 
-            if (vowels.E_CUREK_ALT.indexOf(latin) >= 0)
-                return   7046
+                if (this.code = this.rarangken) {
+                    this.rarangken = undefined
+                    return this.code > 0
+                }
 
-            index = vowels.indexOf(latin)
-            return index >= 0 ? 7043 + index : 0
-        },
-        toSuffixVowel: function(latin, index) {
-            latin = latin.toLowerCase()
-            index = vowels.indexOf(latin)
+                if (!this.prev) return
+                if (code = this.toSuffixVowel(this.latin)) {
+                    this.latin = false
+                    return code
+                }
 
-            if (index > 0) return  7075 + index
-            if (index == 0) return vowels.DEFAULT
-            if (vowels.E_CUREK_ALT.indexOf(latin) >= 0)
-                return 7078
-        },
-        toInfix: function(latin, index) {
-            latin && (latin = latin.toLowerCase())
-            index = rarangkenMap.indexOf(latin, 3)
+                if (code = this.toSuffix(this.latin)) {
+                }
+            },
+            toConsonant: function(latin, index) {
+                latin && (latin = latin.toLowerCase())
+                index = consonants.indexOf(latin)
+                return index >= 0 ? 7050 + index : 0
+            },
+            toVowel: function(latin, index) {
+                latin && (latin = latin.toLowerCase())
 
-            if (index >= 3 && index <= 7) {
-                return 7070 + index
-            }
-        },
-        toSuffix: function(latin, index) {
-            index = rarangkenMap.indexOf(latin.toLowerCase())
-            if (index >= 0 && index <= 2) {
-                return 7040 + index
+                if (vowels.E_CUREK_ALT.indexOf(latin) >= 0)
+                    return   7046
+
+                index = vowels.indexOf(latin)
+                return index >= 0 ? 7043 + index : 0
+            },
+            toSuffixVowel: function(latin, index) {
+                latin = latin.toLowerCase()
+                index = vowels.indexOf(latin)
+
+                if (index > 0) return  7075 + index
+                if (index == 0) return vowels.DEFAULT
+                if (vowels.E_CUREK_ALT.indexOf(latin) >= 0)
+                    return 7078
+            },
+            toInfix: function(latin, index) {
+                latin && (latin = latin.toLowerCase())
+                index = rarangkenMap.indexOf(latin, 3)
+
+                if (index >= 3 && index <= 7) {
+                    return 7070 + index
+                }
+            },
+            toSuffix: function(latin, index) {
+                index = rarangkenMap.indexOf(latin.toLowerCase())
+                if (index >= 0 && index <= 2) {
+                    return 7040 + index
+                }
             }
         }
-    }
-</script>
-</body>
+    </script>
