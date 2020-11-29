@@ -1,0 +1,7 @@
+<!doctype html>
+<script>
+let matches = location.search.match('url=([^&]+)')
+if (matches && matches[1]) {
+  window.location.href = matches[1]  
+}
+</script>
