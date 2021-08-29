@@ -1,24 +1,19 @@
 <meta charset="utf-8"/>
-<style>
-    @font-face { font-family: 'SundaPrada'; src: url('../public/fonts/Sunda_Prada.ttf') format('truetype'), url('../public/fonts/Sunda_Prada.woff') format('woff'), url('../public/fonts/Sunda_Prada.woff2') format('woff2') }
-    @font-face { font-family: 'Kairaga'; src: url('../public/fonts/Kairaga.ttf') format('truetype'), url('../public/fonts/Kairaga.woff2') format('woff2') }
-    @font-face { font-family: 'SundaUnicode'; src: url('../public/fonts/SundaneseUnicode-2.0.ttf') format('truetype'), url('../public/fonts/SundaneseUnicode-2.0.woff') format('woff'), url('../public/fonts/SundaneseUnicode-2.0.woff2') format('woff2') }
-    html,body {font-family: Kairaga, SundaPrada, SundaUnicode !important}
-</style>
 <body>
     <h2>Aksara sunda translator
-        ( <a href="https://github.com/Saung-Rangon/aksun2latin/raw/master/aksun2latin.html">Download</a>
-        | <a href="https://github.com/Saung-Rangon/aksun2latin/edit/master/aksun2latin.html">Edit</a> )
+        ( <a href="https://github.com/Saung-Rangon/aksun2latin/raw/master/aksun2latin.html" target="_blank">Download</a>
+        | <a href="https://github.com/Saung-Rangon/aksun2latin/edit/master/aksun2latin.html" target="_blank">Edit</a>
+        | <a href="https://github.com/Saung-Rangon/aksun2latin/issues/new" target="_blank">Post New Bug</a> )
     </h2>
-    <textarea placeholder="ᮞᮥᮔ᮪ᮓ" id=aksun rows="5" cols="25" style="    font-size: 25px;"></textarea><br/>
-    <input type="submit" value="-- ↓↓ --"/>
-    <input type="submit" value="-- ↑↑ --"/><br/>
+    <textarea placeholder="&#7070;&#7077;&#7060;&#7082;&#7059;" id=aksun rows="5" cols="25" style="    font-size: 25px;"></textarea><br/>
+    <input type="submit" value="-- ↓↓ --" id="toLatin"/>
+    <input type="submit" value="-- ↑↑ --" id="toAksun"/><br/>
     <textarea placeholder="Latin" id=latin rows="5" cols="25" style="    font-size: 25px;"></textarea>
     <script>
         $aksun = document.querySelector('#aksun')
         $latin = document.querySelector('#latin')
-        $button1 = document.querySelector('[value="-- ↓↓ --"]') || {}
-        $button2 = document.querySelector('[value="-- ↑↑ --"]') || {}
+        $button1 = document.querySelector('#toLatin') || {}
+        $button2 = document.querySelector('#toAksun') || {}
         $aksun.onpaste = $aksun.onkeyup = $button1.onclick = function() {
             setTimeout(function() {
                 $latin.value = new aksun2latin($aksun.value)
@@ -49,7 +44,7 @@
             chars = 'aiu\u00e9oe'.split('')
             chars.PAMAEH = 7082
             chars.DEFAULT = 7043
-            chars.E_CUREK_ALT = '\u00e8\u00ea\u0113\u0115' + chars[3]
+            chars.PANAELAENG_ALT = '\u00e8\u00ea\u0113\u0115' + chars[3]
             chars[6] = 'eu'
             chars[7] = chars.PAMAEH
             return chars
@@ -190,6 +185,7 @@
                     case !this.rarangken:
                     case !this.toConsonant(this.prev):
                     case !this.toVowel(this.next):
+                    case !!this.toSuffix(this.prev):
                         break;
 
                     default:
@@ -257,7 +253,7 @@
             toVowel: function(latin, index) {
                 latin && (latin = latin.toLowerCase())
 
-                if (vowels.E_CUREK_ALT.indexOf(latin) >= 0)
+                if (vowels.PANAELAENG_ALT.indexOf(latin) >= 0)
                     return   7046
 
                 index = vowels.indexOf(latin)
@@ -269,7 +265,7 @@
 
                 if (index > 0) return  7075 + index
                 if (index == 0) return vowels.DEFAULT
-                if (vowels.E_CUREK_ALT.indexOf(latin) >= 0)
+                if (vowels.PANAELAENG_ALT.indexOf(latin) >= 0)
                     return 7078
             },
             toInfix: function(latin, index) {
